@@ -16,4 +16,11 @@ class Image extends Model
     {
         return $this->hasOneThrough(Product::class, Category::class);
     }
+    /**
+     * Get the parent imageable model (post or video).
+     */
+    public function imageable()
+    {
+        return $this->morphTo();
+    }
 }

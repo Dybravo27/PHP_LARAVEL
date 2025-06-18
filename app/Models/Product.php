@@ -12,13 +12,20 @@ class Product extends Model
     //     'name',
     // ];
 
-    public function images()
-    {
-        return $this->hasOne('Image');
-    }
+    // public function images()
+    // {
+    //     return $this->hasOne('Image');
+    // }
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    /**
+     * Get all of the post's images.
+     */
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

@@ -15,6 +15,11 @@ return new class extends Migration
             $table->unsignedBigInteger('image_id')->nullable();
             $table->foreign('image_id')->references('id')->on('images');
         });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign('products_image_id_foreign');
+            $table->dropColumn('image_id');
+        });
     }
 
     /**
@@ -25,6 +30,11 @@ return new class extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->dropForeign('products_image_id_foreign');
             $table->dropColumn('image_id');
+        });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->unsignedBigInteger('image_id')->nullable();
+            $table->foreign('image_id')->references('id')->on('images');
         });
     }
 };
